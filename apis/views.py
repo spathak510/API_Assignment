@@ -5,6 +5,7 @@ from apis.models import CustomUser, Contacts
 from apis.serializers import CustomuserSerializer, ContactsSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
+###############  Get user details by user_id  view ######################################
 
 class GetUsersDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated,)
@@ -16,7 +17,7 @@ class GetUsersDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 
-
+################ Contact create view #########################################################
 class ContactCreateView(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = Contacts.objects.all()
@@ -29,7 +30,7 @@ class ContactCreateView(generics.ListCreateAPIView):
 
 
 
-
+################## Get contact user list view ##################################################
 class GetUsersContactListView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated,)
 
@@ -40,6 +41,7 @@ class GetUsersContactListView(generics.RetrieveUpdateDestroyAPIView):
 
 
 
+########################### Contact search by name, email and phone  ###############################
 class ContactSearch(generics.ListCreateAPIView):
     permission_classes = (AllowAny,)
     filter_backends = [DjangoFilterBackend]

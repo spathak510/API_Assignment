@@ -3,10 +3,10 @@ from rest_auth.models import TokenModel
 from rest_auth.registration.serializers import RegisterSerializer
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-
 from apis.models import CustomUser, Contacts
 
 UserModel = get_user_model()
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -37,10 +37,7 @@ class MyCustomTokenSerializer(serializers.ModelSerializer):
 
 class CustomRegisterSerializer(RegisterSerializer):
     email = serializers.EmailField(required=True)
-
-
-
-
+    
     class Meta:
         model = CustomUser
         fields = ('name','email','phone', 'address')
